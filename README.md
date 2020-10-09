@@ -1,8 +1,10 @@
 # Random Pause and Resume YouTube
 
-A throwaway hack. Loads a YouTube video via the YouTube iframe API. When
-started, repeatedly pauses the video for a random period of time and
-then allows it to play again for a random period of time.
+A throwaway hack.
+
+Loads a YouTube video via the YouTube iframe API. When started,
+repeatedly pauses the video for a random period of time and then allows
+it to play again for a random period of time.
 
 ## Usage
 
