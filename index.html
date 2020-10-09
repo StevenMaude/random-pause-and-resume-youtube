@@ -48,10 +48,10 @@
       //    the player should play for six seconds and then stop.
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING) {
-          setTimeout(pauseVideo, randomInteger(5000,25000));
+          setTimeout(pauseVideo, getRandomInt(5000,25000));
         }
         if (event.data == YT.PlayerState.PAUSED) {
-          setTimeout(playVideo, randomInteger(10000,20000));
+          setTimeout(playVideo, getRandomInt(10000,20000));
         }
       }
       function pauseVideo() {
