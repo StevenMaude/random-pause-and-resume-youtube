@@ -2,6 +2,12 @@
 <!-- Based on YouTube API reference: https://developers.google.com/youtube/iframe_api_reference -->
 <html>
   <body>
+    <div class="player-controls">
+      <input id="min-pause" min="0" type="number" value="10">Min pause (seconds)</input><br>
+      <input id="max-pause" min="0" type="number" value="20">Max pause (seconds)</input><br>
+      <input id="min-play" min="0" type="number" value="5">Min play (seconds)</input><br>
+      <input id="max-play" min="0" type="number" value="25">Max play (seconds)</input><br>
+    </div>
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div id="player"></div>
 
@@ -37,6 +43,7 @@
           },
           playerVars: {
             'origin': window.location.origin,
+            'loop': 1,
           },
         });
       }
@@ -50,11 +57,15 @@
       //    The function indicates that when playing a video (state=1),
       //    the player should play for six seconds and then stop.
       function onPlayerStateChange(event) {
+        var minPlay = document.getElementById('min-play').value * 1000
+        var maxPlay = document.getElementById('max-play').value * 1000
+        var minPause = document.getElementById('min-pause').value * 1000
+        var maxPause = document.getElementById('max-pause').value * 1000
         if (event.data == YT.PlayerState.PLAYING) {
-          setTimeout(pauseVideo, getRandomInt(5000,25000));
+          setTimeout(pauseVideo, getRandomInt(minPlay, maxPlay));
         }
         if (event.data == YT.PlayerState.PAUSED) {
-          setTimeout(playVideo, getRandomInt(10000,20000));
+          setTimeout(playVideo, getRandomInt(minPause, maxPause));
         }
       }
       function pauseVideo() {
